@@ -23,8 +23,6 @@ const config = {
 
   // Set the production url of your site here
   url: 'https://gooselang.github.io',
-  projectName: 'gooselang.github.io',
-  organizationName: 'gooselang',
   trailingSlash: false,
   baseUrl: '/',
 
