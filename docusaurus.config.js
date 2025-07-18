@@ -22,15 +22,16 @@ const config = {
   },
 
   // Set the production url of your site here
-  url: 'https://gooselang-doc.netlify.app',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
+  url: 'https://gooselang.github.io',
+  projectName: 'gooselang.github.io',
+  organizationName: 'gooselang',
+  trailingSlash: false,
   baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'GooseLang-Dev', // Usually your GitHub org/user name.
-  projectName: 'GooseLang-Doc', // Usually your repo name.
+  projectName: 'gooselang.github.io', // Usually your repo name.
   deploymentBranch: 'gh-pages',
   trailingSlash: false,
 
