@@ -321,5 +321,25 @@
   "theme.tags.tagsPageTitle": {
     "message": "Tags",
     "description": "The title of the tag list page"
+  },
+  "authbar.contributions": {
+    "message": "Contributions"
+  },
+  "authbar.contributions.untranslated.title": {
+    "message": "Help us improve documentation!",
+    "description": "This title shows at bottom of doc page which not translated and used its english version."
+  },
+  "authbar.contributions.untranslated.message": {
+    "message": "The page you are reading does not have a version in the language you selected. Please help us translate it!",
+    "description": "This message shows at bottom of doc page which not translated and used its english version."
+  },
+  "authbar.contributions.authors": {
+    "message": "Authors"
+  },
+  "authbar.contributions.translators": {
+    "message": "Translators"
+  },
+  "authbar.lastUpdated": {
+    "message": "Last updated on"
   }
 }
