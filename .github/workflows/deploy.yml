@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-    # 如果你想手动触发部署
-    workflow_dispatch:
 
 permissions:
   contents: write
@@ -31,9 +29,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          # 构建输出到 `build` 目录
           publish_dir: ./build
-          # 为 jekyll 处理添加 .nojekyll 文件
-          enable_jekyll: false
-          # 保持提交历史
           force_orphan: true 
