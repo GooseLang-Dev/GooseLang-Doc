@@ -54,8 +54,7 @@ const config: Config = {
           editUrl: 'https://github.com/GooseLang-Dev/gooselang.github.io/tree/main/',
           editLocalizedFiles: true,
           showLastUpdateAuthor: true,
-          showLastUpdateTime: true,
-          routeBasePath: '/'
+          showLastUpdateTime: true
         },
         blog: false,
         theme: {
