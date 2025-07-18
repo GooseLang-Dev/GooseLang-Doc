@@ -34,4 +34,6 @@ jobs:
           # 构建输出到 `build` 目录
           publish_dir: ./build
           # 为 jekyll 处理添加 .nojekyll 文件
-          enable_jekyll: false 
+          enable_jekyll: false
+          # 保持提交历史
+          force_orphan: true 
