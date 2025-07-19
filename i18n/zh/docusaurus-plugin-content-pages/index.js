@@ -2,10 +2,10 @@ import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
+import HomepageFeatures from './features';
 
 import Heading from '@theme/Heading';
-import styles from './index.module.css';
+import styles from '../../../src/pages/index.module.css';
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
@@ -13,7 +13,7 @@ function HomepageHeader() {
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
         <Heading as="h1" className="hero__title">
-          {siteConfig.title}
+          GooseLang 文档中心
         </Heading>
         <p className="hero__subtitle">最终的 GooseLang 开发&使用指南</p>
         <div className={styles.buttons}>
