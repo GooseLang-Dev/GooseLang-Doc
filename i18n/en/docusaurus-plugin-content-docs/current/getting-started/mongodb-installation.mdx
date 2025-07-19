@@ -1,0 +1,233 @@
+
+# 🍃 MongoDB Community Edition Installation
+
+This guide covers the installation of MongoDB Community Edition on different Linux distributions.
+
+:::info Prerequisites
+- Root or sudo access on your system
+- Active internet connection
+- Ubuntu 18.04+ or Debian 10+ system
+:::
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+<TabItem value="ubuntu" label="Ubuntu" default>
+
+## 🐧 Install MongoDB Community Edition on Ubuntu
+
+### 🔐 1. Import the public key used by the package management system
+
+```bash
+curl -fsSL https://www.mongodb.org/static/pgp/server-7.0.asc | \
+   sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg \
+   --dearmor
+```
+
+### 📝 2. Create a list file for MongoDB
+
+For Ubuntu 22.04 (Jammy):
+```bash
+echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+```
+
+For Ubuntu 20.04 (Focal):
+```bash
+echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+```
+
+For Ubuntu 18.04 (Bionic):
+```bash
+echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+```
+
+### 🔄 3. Reload local package database
+
+```bash
+sudo apt-get update
+```
+
+### 📦 4. Install the MongoDB packages
+
+To install the latest stable version:
+```bash
+sudo apt-get install -y mongodb-org
+```
+
+To install a specific release:
+```bash
+sudo apt-get install -y mongodb-org=7.0.4 mongodb-org-database=7.0.4 mongodb-org-server=7.0.4 mongodb-mongosh=2.1.1 mongodb-org-mongos=7.0.4 mongodb-org-tools=7.0.4
+```
+
+### 🚀 5. Start MongoDB
+
+```bash
+sudo systemctl start mongod
+```
+
+### ✅ 6. Verify that MongoDB has started successfully
+
+```bash
+sudo systemctl status mongod
+```
+
+### 🔁 7. Enable MongoDB to start on system reboot
+
+```bash
+sudo systemctl enable mongod
+```
+
+### 🛑 8. Stop MongoDB
+
+```bash
+sudo systemctl stop mongod
+```
+
+### ♻️ 9. Restart MongoDB
+
+```bash
+sudo systemctl restart mongod
+```
+
+### 🎯 10. Begin using MongoDB
+
+```bash
+mongosh
+```
+
+</TabItem>
+<TabItem value="debian" label="Debian">
+
+## 🌀 Install MongoDB Community Edition on Debian
+
+### 🔐 1. Import the public key used by the package management system
+
+```bash
+curl -fsSL https://www.mongodb.org/static/pgp/server-7.0.asc | \
+   sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg \
+   --dearmor
+```
+
+### 📝 2. Create a list file for MongoDB
+
+For Debian 12 (Bookworm):
+```bash
+echo "deb [ signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/debian bookworm/mongodb-org/7.0 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+```
+
+For Debian 11 (Bullseye):
+```bash
+echo "deb [ signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/debian bullseye/mongodb-org/7.0 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+```
+
+For Debian 10 (Buster):
+```bash
+echo "deb [ signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/debian buster/mongodb-org/7.0 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+```
+
+### 🔄 3. Reload local package database
+
+```bash
+sudo apt-get update
+```
+
+### 📦 4. Install the MongoDB packages
+
+To install the latest stable version:
+```bash
+sudo apt-get install -y mongodb-org
+```
+
+To install a specific release:
+```bash
+sudo apt-get install -y mongodb-org=7.0.4 mongodb-org-database=7.0.4 mongodb-org-server=7.0.4 mongodb-mongosh=2.1.1 mongodb-org-mongos=7.0.4 mongodb-org-tools=7.0.4
+```
+
+### 🚀 5. Start MongoDB
+
+```bash
+sudo systemctl start mongod
+```
+
+### ✅ 6. Verify that MongoDB has started successfully
+
+```bash
+sudo systemctl status mongod
+```
+
+### 🔁 7. Enable MongoDB to start on system reboot
+
+```bash
+sudo systemctl enable mongod
+```
+
+### 🛑 8. Stop MongoDB
+
+```bash
+sudo systemctl stop mongod
+```
+
+### ♻️ 9. Restart MongoDB
+
+```bash
+sudo systemctl restart mongod
+```
+
+### 🎯 10. Begin using MongoDB
+
+```bash
+mongosh
+```
+
+</TabItem>
+</Tabs>
+
+## 🗑️ Uninstall MongoDB Community Edition
+
+:::warning Caution
+This will **permanently delete** all MongoDB data and configuration files. Make sure to backup your data before proceeding.
+:::
+
+To completely remove MongoDB from your system:
+
+```bash
+sudo service mongod stop
+sudo apt-get purge mongodb-org*
+sudo rm -r /var/log/mongodb
+sudo rm -r /var/lib/mongodb
+```
+
+## 🔧 Troubleshooting
+
+### ❌ MongoDB fails to start
+
+Check the log file for errors:
+```bash
+sudo cat /var/log/mongodb/mongod.log
+```
+
+:::tip
+Common startup issues include insufficient disk space, port conflicts, or permission problems.
+:::
+
+### 🔒 Permission issues
+
+Ensure MongoDB has the correct ownership:
+```bash
+sudo chown -R mongodb:mongodb /var/lib/mongodb
+sudo chown mongodb:mongodb /tmp/mongodb-27017.sock
+```
+
+### 🚪 Port conflicts
+
+Check if port 27017 is in use:
+```bash
+sudo netstat -tulpn | grep :27017
+```
+
+:::note Additional Resources
+- [MongoDB Documentation](https://docs.mongodb.com/)
+- [MongoDB Community Forums](https://developer.mongodb.com/community/forums/)
+- [MongoDB University](https://university.mongodb.com/)
+:::

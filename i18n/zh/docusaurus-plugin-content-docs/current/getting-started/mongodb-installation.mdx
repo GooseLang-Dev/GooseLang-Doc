@@ -1,0 +1,232 @@
+# 🍃 MongoDB 社区版安装指南
+
+本指南涵盖了在不同 Linux 发行版上安装 MongoDB 社区版的方法。
+
+:::info 前置条件
+- 系统的 root 或 sudo 访问权限
+- 可用的网络连接
+- Ubuntu 18.04+ 或 Debian 10+ 系统
+:::
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+<TabItem value="ubuntu" label="Ubuntu" default>
+
+## 🐧 在 Ubuntu 上安装 MongoDB 社区版
+
+### 🔐 1. 导入包管理系统使用的公钥
+
+```bash
+curl -fsSL https://www.mongodb.org/static/pgp/server-7.0.asc | \
+   sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg \
+   --dearmor
+```
+
+### 📝 2. 创建 MongoDB 的列表文件
+
+Ubuntu 22.04 (Jammy):
+```bash
+echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+```
+
+Ubuntu 20.04 (Focal):
+```bash
+echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+```
+
+Ubuntu 18.04 (Bionic):
+```bash
+echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+```
+
+### 🔄 3. 重新加载本地软件包数据库
+
+```bash
+sudo apt-get update
+```
+
+### 📦 4. 安装 MongoDB 软件包
+
+安装最新稳定版：
+```bash
+sudo apt-get install -y mongodb-org
+```
+
+安装特定版本：
+```bash
+sudo apt-get install -y mongodb-org=7.0.4 mongodb-org-database=7.0.4 mongodb-org-server=7.0.4 mongodb-mongosh=2.1.1 mongodb-org-mongos=7.0.4 mongodb-org-tools=7.0.4
+```
+
+### 🚀 5. 启动 MongoDB
+
+```bash
+sudo systemctl start mongod
+```
+
+### ✅ 6. 验证 MongoDB 是否成功启动
+
+```bash
+sudo systemctl status mongod
+```
+
+### 🔁 7. 设置 MongoDB 开机自启
+
+```bash
+sudo systemctl enable mongod
+```
+
+### 🛑 8. 停止 MongoDB
+
+```bash
+sudo systemctl stop mongod
+```
+
+### ♻️ 9. 重启 MongoDB
+
+```bash
+sudo systemctl restart mongod
+```
+
+### 🎯 10. 开始使用 MongoDB
+
+```bash
+mongosh
+```
+
+</TabItem>
+<TabItem value="debian" label="Debian">
+
+## 🌀 在 Debian 上安装 MongoDB 社区版
+
+### 🔐 1. 导入包管理系统使用的公钥
+
+```bash
+curl -fsSL https://www.mongodb.org/static/pgp/server-7.0.asc | \
+   sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg \
+   --dearmor
+```
+
+### 📝 2. 创建 MongoDB 的列表文件
+
+Debian 12 (Bookworm):
+```bash
+echo "deb [ signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/debian bookworm/mongodb-org/7.0 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+```
+
+Debian 11 (Bullseye):
+```bash
+echo "deb [ signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/debian bullseye/mongodb-org/7.0 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+```
+
+Debian 10 (Buster):
+```bash
+echo "deb [ signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/debian buster/mongodb-org/7.0 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+```
+
+### 🔄 3. 重新加载本地软件包数据库
+
+```bash
+sudo apt-get update
+```
+
+### 📦 4. 安装 MongoDB 软件包
+
+安装最新稳定版：
+```bash
+sudo apt-get install -y mongodb-org
+```
+
+安装特定版本：
+```bash
+sudo apt-get install -y mongodb-org=7.0.4 mongodb-org-database=7.0.4 mongodb-org-server=7.0.4 mongodb-mongosh=2.1.1 mongodb-org-mongos=7.0.4 mongodb-org-tools=7.0.4
+```
+
+### 🚀 5. 启动 MongoDB
+
+```bash
+sudo systemctl start mongod
+```
+
+### ✅ 6. 验证 MongoDB 是否成功启动
+
+```bash
+sudo systemctl status mongod
+```
+
+### 🔁 7. 设置 MongoDB 开机自启
+
+```bash
+sudo systemctl enable mongod
+```
+
+### 🛑 8. 停止 MongoDB
+
+```bash
+sudo systemctl stop mongod
+```
+
+### ♻️ 9. 重启 MongoDB
+
+```bash
+sudo systemctl restart mongod
+```
+
+### 🎯 10. 开始使用 MongoDB
+
+```bash
+mongosh
+```
+
+</TabItem>
+</Tabs>
+
+## 🗑️ 卸载 MongoDB 社区版
+
+:::warning 注意
+这将**永久删除**所有 MongoDB 数据和配置文件。请确保在继续之前备份您的数据。
+:::
+
+要完全从系统中移除 MongoDB：
+
+```bash
+sudo service mongod stop
+sudo apt-get purge mongodb-org*
+sudo rm -r /var/log/mongodb
+sudo rm -r /var/lib/mongodb
+```
+
+## 🔧 故障排除
+
+### ❌ MongoDB 无法启动
+
+检查日志文件中的错误：
+```bash
+sudo cat /var/log/mongodb/mongod.log
+```
+
+:::tip
+常见的启动问题包括磁盘空间不足、端口冲突或权限问题。
+:::
+
+### 🔒 权限问题
+
+确保 MongoDB 具有正确的所有权：
+```bash
+sudo chown -R mongodb:mongodb /var/lib/mongodb
+sudo chown mongodb:mongodb /tmp/mongodb-27017.sock
+```
+
+### 🚪 端口冲突
+
+检查端口 27017 是否被占用：
+```bash
+sudo netstat -tulpn | grep :27017
+```
+
+:::note 其他资源
+- [MongoDB 文档](https://docs.mongodb.com/)
+- [MongoDB 社区论坛](https://developer.mongodb.com/community/forums/)
+- [MongoDB 大学](https://university.mongodb.com/)
+:::

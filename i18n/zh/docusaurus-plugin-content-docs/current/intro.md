@@ -1,6 +1,6 @@
 ---
 id: intro
-title: 简介
+title: Introduction
 ---
 
 # Tutorial Intro
