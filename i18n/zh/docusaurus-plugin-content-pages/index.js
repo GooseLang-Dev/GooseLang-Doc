@@ -15,18 +15,18 @@ function HomepageHeader() {
         <Heading as="h1" className="hero__title">
           {siteConfig.title}
         </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
+        <p className="hero__subtitle">最终的 GooseLang 开发&使用指南</p>
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
             to="/dev/intro">
-            Development⚙️
+            开发文档⚙️
           </Link> 
           <span style={{width:'5vw'}}></span>
           <Link
             className="button button--secondary button--lg"
             to="/guide/intro">
-            User Guide🧭
+            用户手册🧭
           </Link>
         </div>
       </div>
@@ -38,8 +38,8 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Welcome to ${siteConfig.title}`}
-      description="The Ultimate Guide to GooseLang Development & Usage">
+      title={`欢迎来到 ${siteConfig.title}`}
+      description="最终的 GooseLang 开发&使用指南">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

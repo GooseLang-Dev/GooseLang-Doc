@@ -1,6 +1,6 @@
 {
   "title": {
-    "message": "GooseLang",
+    "message": "Gooselang",
     "description": "The title in the navbar"
   },
   "logo.alt": {
@@ -18,17 +18,5 @@
   "item.label.GitHub": {
     "message": "GitHub",
     "description": "Navbar item with label GitHub"
-  },
-  "item.label.文档": {
-    "message": "Docs",
-    "description": "Navbar item with label 文档"
-  },
-  "item.label.Documentation": {
-    "message": "Documentation",
-    "description": "Navbar item with label Documentation"
-  },
-  "item.label.Home": {
-    "message": "Home",
-    "description": "Navbar item with label Home"
   }
 }

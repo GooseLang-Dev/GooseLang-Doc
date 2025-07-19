@@ -18,6 +18,6 @@
     "src/**/*",
     "docs/**/*",
     "docusaurus.config.ts",
-    "sidebars.ts"
+    "devSidebars.ts"
   ]
 }
